@@ -1,14 +1,17 @@
 module BsGenerator
   class BsBase
 
-    def self.generate_bs
+    def self.generate_bs(options={})
     end
 
-    def self.generate(num=1)
-      return generate_bs if num <= 1
-      bs = []
-      num.times { bs << generate_bs }
-      bs
+    def self.generate(options={})
+      if options[:times] && options[:times] > 1
+        bs = []
+        options[:times].times { bs << generate_bs(options) }
+        bs
+      else
+        generate_bs(options)
+      end
     end
   end
 
@@ -181,7 +184,7 @@ module BsGenerator
       "Organizational diversity and accountability is paramount for long term success and a happy work environment."
     ]
       
-    def self.generate_bs
+    def self.generate_bs(options={})
       result = PHRASES[rand(PHRASES.length + 1)]
       result.gsub!("{VERB}", VERBS[rand(VERBS.length + 1)]) rescue nil
       result.gsub!("{NOUN}", NOUNS[rand(NOUNS.length + 1)]) rescue nil
@@ -193,6 +196,7 @@ module BsGenerator
 
   end
 
+  # Ruby port of http://emptybottle.org/bullshit/index.php
   class Web2 < BsBase
     PERSON = ["I am", "We are", "My team is"]
     VERBS = ["aggregating", "beta-testing", "integrating", "capturing", "creating", "designing", "disintermediating", "enabling", "integrating", "posting", "remixing", "reinventing", "sharing", "syndicating", "tagging", "incentivizing", "engaging", "reinventing", "harnessing", "integrating"]
@@ -200,15 +204,16 @@ module BsGenerator
     NOUNS = ["APIs","blogospheres","communities","ecologies","feeds","folksonomies","life-hacks","mashups","network effects","networking","platforms","podcasts","value","web services","weblogs","widgets","wikis","synergies","ad delivery","tagclouds"]
     TIME = ["It might take another couple of hours", "I should be done by afternoon", "I should be done by evening", "I don't think this should take more than a few hours", "Shouldn't take too long"]
 
-    def self.generate_bs(prefix="I am", add_time=true)
+    def self.generate_bs(options={})
+      options = {:prefix => "I am", :add_time => true}.merge(options)
       v = VERBS[rand(VERBS.length + 1)]
       a = ADJECTIVES[rand(ADJECTIVES.length + 1)]
       n = NOUNS[rand(NOUNS.length + 1)]
       t = TIME[rand(TIME.length + 1)]
-      if add_time == true
-        "%s %s %s %s. %s" % [prefix, v, a , n, t]
+      if options[:add_time] == true
+        "%s %s %s %s. %s" % [options[:prefix], v, a , n, t]
       else
-        "%s %s %s %s" % [prefix, v, a , n]
+        "%s %s %s %s" % [options[:prefix], v, a , n]
       end
     end
 
