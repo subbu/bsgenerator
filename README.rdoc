@@ -1,0 +1,12 @@
+= Bullshit generator
+A generic bullshit generator.
+
+== Demo
+https://WhoIsWhorkingOnWhat.com/demo
+
+== Usage
+Generate bs like BsGenerator::Corporate.generate
+
+== Authors and credits
+BsGenerator::Corporate is a Ruby port of http://startupista.com/corporate-bullshit-generator/ written in JavaScript.
+Original JavaScript source: http://startupista.com/corporate-bullshit-generator/javascripts/corporate-bullshit-generator.js
