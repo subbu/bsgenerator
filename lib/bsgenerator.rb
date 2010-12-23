@@ -1,6 +1,19 @@
 module BsGenerator
+  class BsBase
+
+    def self.generate_bs
+    end
+
+    def self.generate(num=1)
+      return generate_bs if num <= 1
+      bs = []
+      num.times { bs << generate_bs }
+      bs
+    end
+  end
+
   # Ruby port of http://startupista.com/corporate-bullshit-generator/
-  class Corporate
+  class Corporate < BsBase
     ADJECTIVES = [
       "incredible",
       "great",
@@ -177,13 +190,27 @@ module BsGenerator
       result
     end
 
-    def self.generate(num=1)
-      return generate_bs if num <= 1
-      bs = []
-      num.times { bs << generate_bs }
-      bs
-    end
 
+  end
+
+  class Web2 < BsBase
+    PERSON = ["I am", "We are", "My team is"]
+    VERBS = ["aggregating", "beta-testing", "integrating", "capturing", "creating", "designing", "disintermediating", "enabling", "integrating", "posting", "remixing", "reinventing", "sharing", "syndicating", "tagging", "incentivizing", "engaging", "reinventing", "harnessing", "integrating"]
+    ADJECTIVES = ["AJAX-enabled","A-list","authentic","citizen-media","Cluetrain","data-driven","dynamic","embedded","long-tail","peer-to-peer","podcasting","rss-capable","semantic","social","standards-compliant","user-centred","user-contributed","viral","blogging","rich-client"]
+    NOUNS = ["APIs","blogospheres","communities","ecologies","feeds","folksonomies","life-hacks","mashups","network effects","networking","platforms","podcasts","value","web services","weblogs","widgets","wikis","synergies","ad delivery","tagclouds"]
+    TIME = ["It might take another couple of hours", "I should be done by afternoon", "I should be done by evening", "I don't think this should take more than a few hours", "Shouldn't take too long"]
+
+    def self.generate_bs(prefix="I am", add_time=true)
+      v = VERBS[rand(VERBS.length + 1)]
+      a = ADJECTIVES[rand(ADJECTIVES.length + 1)]
+      n = NOUNS[rand(NOUNS.length + 1)]
+      t = TIME[rand(TIME.length + 1)]
+      if add_time == true
+        "%s %s %s %s. %s" % [prefix, v, a , n, t]
+      else
+        "%s %s %s %s" % [prefix, v, a , n]
+      end
+    end
 
   end
 end
