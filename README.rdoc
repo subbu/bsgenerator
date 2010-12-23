@@ -2,11 +2,24 @@
 A generic bullshit generator.
 
 == Demo
-https://WhoIsWhorkingOnWhat.com/demo
+Corporate bullshit: https://WhoIsWhorkingOnWhat.com/ibm
+Web 2.0 bullshit: https://WhoIsWhorkingOnWhat.com/demo
 
 == Usage
-Generate bs like BsGenerator::Corporate.generate
+To generate corporate bs: 
+BsGenerator::Corporate.generate
+It generates a single sentence of bullshit. If you want more than one sentence then just pass the number of sentences as the only parameter. Like:
+BsGenerator::Corporate.generate(3)
+
+To generate Web 2.0 bs: 
+BsGenerator::Web2.generate
+
 
 == Authors and credits
+=== Corporate bullshit
 BsGenerator::Corporate is a Ruby port of http://startupista.com/corporate-bullshit-generator/ written in JavaScript.
 Original JavaScript source: http://startupista.com/corporate-bullshit-generator/javascripts/corporate-bullshit-generator.js
+
+=== Web 2.0 bullshit
+BsGenerator::Web2 is a Ruby port of http://emptybottle.org/bullshit/index.php
+I have added a prefix and time to make it fit for 'who is working on what'.
