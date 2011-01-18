@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "bsgenerator"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.files         = ["bsgenerator.gemspec", "README.rdoc", "Rakefile", "lib/bsgenerator.rb", "lib/bsgenerator/version.rb"]
+  s.test_files    = []
+  s.executables   = []
   s.require_paths = ["lib"]
 end
