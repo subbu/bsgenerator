@@ -2,21 +2,24 @@
 A generic bullshit generator.
 
 == Demo
-Corporate bullshit: https://WhoIsWhorkingOnWhat.com/microsoft
-Web 2.0 bullshit: https://WhoIsWhorkingOnWhat.com/demo
+To view generated corporate bullshit, visit: https://WhoIsWorkingOnWhat.com/microsoft
+To generate bs, then visit: https://WhoIsWorkingOnWhat.com/microsoft after visiting the first URL.
+Web 2.0 bullshit: https://WhoIsWorkingOnWhat.com/twitter
 
 == Usage
 To generate corporate bs: 
-BsGenerator::Corporate.generate
+
+  BsGenerator::Corporate.generate
 
 To generate Web 2.0 bs: 
-BsGenerator::Web2.generate
+
+  BsGenerator::Web2.generate
 
 You can also customize the output:
-BsGenerator::Web2.generate(:prefix => "We are") will replace "I am" in the generated bs.
+  BsGenerator::Web2.generate(:prefix => "We are") will replace "I am" in the generated bs.
 
 If you want more than one setence of bs then:
-BsGenerator::Web2.generate(:times => 10) will produce 10 sentences of Web 2.0 bs.
+  BsGenerator::Web2.generate(:times => 10) will produce 10 sentences of Web 2.0 bs.
 
 == Authors and credits
 === Corporate bullshit
